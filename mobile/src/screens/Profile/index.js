@@ -81,8 +81,9 @@ const Profile = () => {
             autoCapitalize="none"
             onChangeText={setEmail}
             value={email}
-            onSubmitEditing={() => currentPwdRef.current.focus()}
+            ref={emailRef}
             returnKeyType="next"
+            onSubmitEditing={() => currentPwdRef.current.focus()}
           />
 
           <S.Separator />

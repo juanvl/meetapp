@@ -30,7 +30,13 @@ export default function Profile() {
 
   function handleSubmit(data, { resetForm }) {
     dispatch(updateProfileRequest(data));
-    resetForm({ ...user });
+    resetForm({
+      name: data.name,
+      email: data.email,
+      currentPassword: '',
+      password: '',
+      confirmPassword: ''
+    });
   }
 
   return (
