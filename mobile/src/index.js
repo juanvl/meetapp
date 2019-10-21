@@ -8,6 +8,8 @@ import './config/ReactotronConfig';
 import { store, persistor } from './store';
 import App from './App';
 
+console.disableYellowBox = true;
+
 const Index = () => (
   <Provider store={store}>
     <PersistGate persistor={persistor}>

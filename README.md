@@ -20,13 +20,17 @@ O servidor já estará rodando e pronto para receber requisições da api.
 
 #### 2. Meetapp Web
 
-* Acesse a pasta **frontend** deste projeto e execute no terminal:
+* Abra outro terminal e navegue até pasta **frontend** deste projeto, então execute:
 
+```
+yarn
+```
+* Em seguida:
 ```
 yarn start
 ```
 
-É necessário ter o <a href="https://nodejs.org/" target="blank">Node</a> instalado em sua máquina. Caso não tenha o <a href="https://yarnpkg.com/" target="blank">yarn</a> pode rodar também com `npm start`.
+É necessário ter o <a href="https://nodejs.org/" target="blank">Node</a> instalado em sua máquina. Caso não tenha o <a href="https://yarnpkg.com/" target="blank">yarn</a> pode substituir o comando por `npm`.
 
 A aplicação ficará acessível no seu navegador em http://localhost:3000
 
@@ -34,7 +38,12 @@ A aplicação ficará acessível no seu navegador em http://localhost:3000
 
 > :warning: **A versão mobile foi desenvolvida e testada somente no emulador do iOS. O funcionamento no Android não é garantido.**
 
-* Acesse a pasta **mobile** deste projeto e execute no terminal:
+* Acesse a pasta **mobile** deste projeto em um novo terminal e execute:
+
+```
+yarn
+```
+* Em seguida:
 
 ```
 react-native run-ios
