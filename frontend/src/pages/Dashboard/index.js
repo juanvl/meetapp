@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MdAddCircleOutline } from 'react-icons/md';
+import { FaSpinner } from 'react-icons/fa';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
@@ -10,6 +11,7 @@ import api from '~/services/api';
 
 const Dashboard = () => {
   const [meetups, setMeetups] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -29,8 +31,17 @@ const Dashboard = () => {
       });
 
       setMeetups(data);
+      setLoading(false);
     })();
   }, []);
+
+  if (loading) {
+    return (
+      <S.LoadingContainer>
+        <FaSpinner size={80} color="#fff" />
+      </S.LoadingContainer>
+    );
+  }
 
   return (
     <S.Container>
@@ -41,14 +52,24 @@ const Dashboard = () => {
           Novo meetup
         </Button>
       </div>
-      <ul>
-        {meetups.map(m => (
-          <li key={m.id} onClick={() => history.push(`/meetup/${m.id}/detail`)}>
-            <strong>{m.title}</strong>
-            <span>{m.formattedDate}</span>
-          </li>
-        ))}
-      </ul>
+      {meetups.length ? (
+        <ul>
+          {meetups.map(m => (
+            <li
+              key={m.id}
+              onClick={() => history.push(`/meetup/${m.id}/detail`)}
+            >
+              <strong>{m.title}</strong>
+              <span>{m.formattedDate}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <S.Empty>
+          <strong>:(</strong>
+          <span>Você não está organizando nenhum meetup...</span>
+        </S.Empty>
+      )}
     </S.Container>
   );
 };

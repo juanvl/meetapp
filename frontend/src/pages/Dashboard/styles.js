@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { container } from '~/styles/common';
 
 export const Container = styled.div`
@@ -44,5 +44,44 @@ export const Container = styled.div`
         opacity: 0.6;
       }
     }
+  }
+`;
+
+export const Empty = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25%;
+
+  strong {
+    color: #ccc;
+    font-size: 100px;
+  }
+
+  span {
+    color: #ccc;
+    font-size: 20px;
+    margin-top: 50px;
+  }
+`;
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+export const LoadingContainer = styled.div`
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    animation: ${rotate} 2s linear infinite;
   }
 `;
