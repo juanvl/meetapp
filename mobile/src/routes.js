@@ -60,7 +60,6 @@ const Routes = (isSigned = false) =>
           {
             resetOnBlur: true,
             tabBarOptions: {
-              keyboardHidesTabBar: true,
               activeTintColor: '#fff',
               inactiveTintColor: 'rgba(255,255,255, 0.6)',
               style: {
