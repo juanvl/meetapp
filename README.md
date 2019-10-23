@@ -10,7 +10,9 @@ A versão web foi desenvolvida para os organizadores poderem criar e gerenciar s
 
 #### 1. Meetapp Server
 
-* Com o <a href="https://docs.docker.com/install/" target="blank">Docker</a> e <a href="https://docs.docker.com/compose/install/" target="blank">Docker Compose</a> instalados, acesse a pasta **backend** do projeto e execute no terminal:
+* Acesse a pasta **backend** do projeto.
+* Nesta pasta há um arquivo chamado `.env.sample`, copie o conteúdo deste arquivo, crie um arquivo no mesmo diretório com o nome `.env`, cole e salve o conteúdo.
+* Com o <a href="https://docs.docker.com/install/" target="blank">Docker</a> e <a href="https://docs.docker.com/compose/install/" target="blank">Docker Compose</a> instalados, execute no terminal:
 
 ```
 docker-compose up
