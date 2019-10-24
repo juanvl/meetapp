@@ -18,7 +18,15 @@ A versão web foi desenvolvida para os organizadores poderem criar e gerenciar s
 docker-compose up
 ```
 
-O servidor já estará rodando e pronto para receber requisições da api.
+:white_check_mark: **O servidor já estará rodando e pronto para receber requisições da api.**
+
+Foram implementados alguns testes para User e Session, só para botar o conteúdo em prática ;)
+
+Caso queira rodar testes, execute no terminal:
+
+```
+docker-compose exec web yarn test
+```
 
 #### 2. Meetapp Web
 
