@@ -29,7 +29,6 @@
   },
   "dependencies": {
     "@sentry/node": "^5.6.2",
-    "app-module-path": "^2.2.0",
     "axios": "latest",
     "bcryptjs": "latest",
     "bee-queue": "^1.2.2",

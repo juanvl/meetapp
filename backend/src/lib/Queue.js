@@ -1,7 +1,8 @@
 import Bee from 'bee-queue';
 import * as Sentry from '@sentry/node';
-import SubscriptionMail from 'app/jobs/SubscriptionMail';
-import sentryConfig from 'config/sentry';
+
+import SubscriptionMail from '../app/jobs/SubscriptionMail';
+import sentryConfig from '../config/sentry';
 
 Sentry.init(sentryConfig);
 

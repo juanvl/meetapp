@@ -1,13 +1,14 @@
 import { Router } from 'express';
 import multer from 'multer';
-import multerConfig from 'config/multer';
-import UserController from 'app/controllers/UserController';
-import SessionController from 'app/controllers/SessionController';
-import FileController from 'app/controllers/FileController';
-import MeetupController from 'app/controllers/MeetupController';
-import UserOwnedMeetupsController from 'app/controllers/UserOwnedMeetupsController';
-import SubscriptionController from 'app/controllers/SubscriptionController';
-import authMiddleware from 'app/middlewares/auth';
+
+import multerConfig from './config/multer';
+import UserController from './app/controllers/UserController';
+import SessionController from './app/controllers/SessionController';
+import FileController from './app/controllers/FileController';
+import MeetupController from './app/controllers/MeetupController';
+import UserOwnedMeetupsController from './app/controllers/UserOwnedMeetupsController';
+import SubscriptionController from './app/controllers/SubscriptionController';
+import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
 const upload = multer(multerConfig);

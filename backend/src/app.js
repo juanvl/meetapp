@@ -8,7 +8,7 @@ import * as Sentry from '@sentry/node';
 import 'express-async-errors';
 
 import './database';
-import sentryConfig from 'config/sentry';
+import sentryConfig from './config/sentry';
 import routes from './routes';
 
 class App {
