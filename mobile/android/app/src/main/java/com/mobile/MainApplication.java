@@ -1,4 +1,4 @@
-package com.meetappmobile;
+package com.mobile;
 
 import android.app.Application;
 import android.content.Context;
