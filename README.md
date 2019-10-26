@@ -48,12 +48,22 @@ A aplicação ficará acessível no seu navegador em http://localhost:3000
 
 > :warning: **A versão mobile foi desenvolvida e testada somente no emulador do iOS. O funcionamento no Android não é garantido.**
 
+> Antes de tudo certifique-se de ter o ambiente react-native devidamente configurado em sua máquina (<a href="https://docs.rocketseat.dev/ambiente-react-native/introducao">Guia do ambiente</a>)
+
+> Para o iOS este projeto utiliza o *CocoaPods*. Caso ocorra algum erro relacionado você terá de instalá-lo manualmente (https://cocoapods.org/)
+
 * Acesse a pasta **mobile** deste projeto em um novo terminal e execute:
 
 ```
 yarn
 ```
 * Em seguida:
+
+```
+cd ios && pod install
+```
+
+* Finalmente, volte para a pasta **mobile** e execute:
 
 ```
 react-native run-ios
