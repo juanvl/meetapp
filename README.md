@@ -8,7 +8,7 @@ A versão web foi desenvolvida para os organizadores poderem criar e gerenciar s
 
 ## Passo a passo para executar a aplicação
 
-#### 1. Meetapp Server
+### 1. Meetapp Server
 
 * Acesse a pasta **backend** do projeto.
 * Nesta pasta há um arquivo chamado `.env.sample`, copie o conteúdo deste arquivo, crie um arquivo no mesmo diretório com o nome `.env`, cole e salve o conteúdo (`cp .env.sample .env`).
@@ -28,7 +28,7 @@ Caso queira rodar testes, execute no terminal:
 docker-compose exec web yarn test
 ```
 
-#### 2. Meetapp Web
+### 2. Meetapp Web
 
 * Abra outro terminal e navegue até pasta **frontend** deste projeto, então execute:
 
@@ -44,7 +44,7 @@ yarn start
 
 A aplicação ficará acessível no seu navegador em http://localhost:3000
 
-#### 3. Meetapp Mobile
+### 3. Meetapp Mobile
 
 > :warning: **A versão mobile foi desenvolvida e testada somente no emulador do iOS. O funcionamento no Android não é garantido.**
 
