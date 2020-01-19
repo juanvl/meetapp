@@ -2,9 +2,40 @@
 
 Projeto final para certificação no bootcamp da <a href="https://rocketseat.com.br/" target="blank">Rocketseat</a>.
 
+<p align="center">
+  <img src="certificate.png" />
+</p>
+
+Link do certificado de aprovação: https://skylab.rocketseat.com.br/api/files/certificates/2460294a-268b-4f11-bf48-65929572d81d.pdf
+
 O Meetapp é uma aplicação que permite aos usuários participar, criar e gerenciar encontros (meetups).
 
 A versão web foi desenvolvida para os organizadores poderem criar e gerenciar seus meetups, enquanto a versão mobile serve para os usuários gerenciarem suas participações em meetups.
+
+Todo o layout da web e mobile foram construídos a partir de modelos do Sketch (disponíveis nas pastas dos projetos).
+
+## Screenshots Web
+
+<p align="center">
+  <img src="./preview/web/signup.png" />
+  <img src="./preview/web/login.png" />
+  <img src="./preview/web/create-meetup.png" />
+  <img src="./preview/web/create-meetup-data.png" />
+  <img src="./preview/web/dashboard.png" />
+  <img src="./preview/web/meetup-info.png" />
+  <img src="./preview/web/profile.png" />
+</p>
+
+## Screenshots Mobile
+
+<div style="float: left;">
+  <img src="./preview/mobile/signup-data.png" width="400"/>
+  <img src="./preview/mobile/login.png" width="400"/>
+  <img src="./preview/mobile/meetups-date-select.png" width="400"/>
+  <img src="./preview/mobile/meetups.png" width="400"/>
+  <img src="./preview/mobile/subscriptions.png" width="400"/>
+  <img src="./preview/mobile/profile.png" width="400"/>
+</div>
 
 ## Passo a passo para executar a aplicação
 
