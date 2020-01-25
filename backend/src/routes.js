@@ -10,15 +10,17 @@ import UserOwnedMeetupsController from './app/controllers/UserOwnedMeetupsContro
 import SubscriptionController from './app/controllers/SubscriptionController';
 import authMiddleware from './app/middlewares/auth';
 
+import * as UserValidator from './app/validators/UserValidator';
+
 const routes = new Router();
 const upload = multer(multerConfig);
 
-routes.post('/users', UserController.store);
+routes.post('/users', UserValidator.store, UserController.store);
 routes.post('/sessions', SessionController.store);
 
 routes.use(authMiddleware);
 
-routes.put('/users', UserController.update);
+routes.put('/users', UserValidator.update, UserController.update);
 
 routes.post('/files', upload.single('file'), FileController.store);
 
