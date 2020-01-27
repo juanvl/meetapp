@@ -6,8 +6,16 @@ import User from '../models/User';
 import File from '../models/File';
 import CreateSubscriptionService from '../services/CreateSubscriptionService';
 
+import Cache from '../../lib/Cache';
+
 class SubscriptionController {
   async index(req, res) {
+    const cached = await Cache.get('subscriptions');
+
+    if (cached) {
+      return res.json(cached);
+    }
+
     const subscriptions = await Subscription.findAll({
       where: { user_id: req.userId },
       include: [
@@ -31,6 +39,9 @@ class SubscriptionController {
       ],
       order: [[Meetup, 'date']],
     });
+
+    await Cache.set('subscriptions', subscriptions);
+
     return res.json(subscriptions);
   }
 

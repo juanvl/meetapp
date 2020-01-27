@@ -2,6 +2,8 @@ import { isBefore, parseISO } from 'date-fns';
 
 import Meetup from '../models/Meetup';
 
+import Cache from '../../lib/Cache';
+
 class UserOwnedMeetupsController {
   async index(req, res) {
     const meetups = await Meetup.findAll({
@@ -49,6 +51,8 @@ class UserOwnedMeetupsController {
     }
 
     await meetup.destroy();
+
+    await Cache.invalidate('subscriptions');
 
     return res.send();
   }
