@@ -1,4 +1,3 @@
-import * as Yup from 'yup';
 import { isBefore, parseISO } from 'date-fns';
 
 import Meetup from '../models/Meetup';
@@ -14,18 +13,6 @@ class UserOwnedMeetupsController {
   }
 
   async update(req, res) {
-    const schema = Yup.object().shape({
-      title: Yup.string(),
-      file_id: Yup.number(),
-      desc: Yup.string(),
-      location: Yup.string(),
-      date: Yup.date(),
-    });
-
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation fails' });
-    }
-
     const { id } = req.params;
     const meetup = await Meetup.findByPk(id);
 

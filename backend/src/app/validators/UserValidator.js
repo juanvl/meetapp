@@ -1,7 +1,5 @@
 import * as Yup from 'yup';
 
-import User from '../models/User';
-
 export async function store(req, res, next) {
   try {
     const schema = Yup.object().shape({
@@ -15,11 +13,6 @@ export async function store(req, res, next) {
     });
 
     await schema.validate(req.body, { abortEarly: false });
-
-    const userExists = await User.findOne({ where: { email: req.body.email } });
-    if (userExists) {
-      return res.status(400).json({ error: 'User already exists' });
-    }
 
     return next();
   } catch (error) {
