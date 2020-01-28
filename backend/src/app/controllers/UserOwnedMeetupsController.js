@@ -52,7 +52,7 @@ class UserOwnedMeetupsController {
 
     await meetup.destroy();
 
-    await Cache.invalidate('subscriptions');
+    await Cache.invalidatePrefix('subscriptions');
 
     return res.send();
   }

@@ -10,7 +10,8 @@ import Cache from '../../lib/Cache';
 
 class SubscriptionController {
   async index(req, res) {
-    const cached = await Cache.get('subscriptions');
+    const cacheKey = `subscriptions:${req.userId}`;
+    const cached = await Cache.get(cacheKey);
 
     if (cached) {
       return res.json(cached);
@@ -40,7 +41,7 @@ class SubscriptionController {
       order: [[Meetup, 'date']],
     });
 
-    await Cache.set('subscriptions', subscriptions);
+    await Cache.set(cacheKey, subscriptions);
 
     return res.json(subscriptions);
   }
@@ -54,6 +55,8 @@ class SubscriptionController {
       meetup_id,
     });
 
+    await Cache.invalidate(`subscriptions:${user_id}`);
+
     return res.json(subscription);
   }
 
@@ -61,6 +64,8 @@ class SubscriptionController {
     const subscription = await Subscription.findByPk(req.params.id);
 
     await subscription.destroy();
+
+    await Cache.invalidate(`subscriptions:${req.userId}`);
 
     return res.send();
   }
