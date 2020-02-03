@@ -40,6 +40,7 @@
     "express-brute": "^1.0.1",
     "express-brute-redis": "^0.0.1",
     "express-handlebars": "^3.1.0",
+    "express-rate-limit": "^5.0.0",
     "helmet": "^3.21.2",
     "ioredis": "^4.14.1",
     "jsonwebtoken": "latest",
@@ -48,6 +49,8 @@
     "nodemailer-express-handlebars": "^3.1.0",
     "pg": "latest",
     "pg-hstore": "latest",
+    "rate-limit-redis": "^1.7.0",
+    "redis": "^2.8.0",
     "sequelize": "latest",
     "youch": "^2.0.10",
     "yup": "latest"
