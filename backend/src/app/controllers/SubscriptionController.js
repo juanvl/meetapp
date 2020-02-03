@@ -1,14 +1,22 @@
 import { Op } from 'sequelize';
 
-import SubscriptionMail from '../jobs/SubscriptionMail';
-import Queue from '../../lib/Queue';
 import Subscription from '../models/Subscription';
 import Meetup from '../models/Meetup';
 import User from '../models/User';
 import File from '../models/File';
+import CreateSubscriptionService from '../services/CreateSubscriptionService';
+
+import Cache from '../../lib/Cache';
 
 class SubscriptionController {
   async index(req, res) {
+    const cacheKey = `subscriptions:${req.userId}`;
+    const cached = await Cache.get(cacheKey);
+
+    if (cached) {
+      return res.json(cached);
+    }
+
     const subscriptions = await Subscription.findAll({
       where: { user_id: req.userId },
       include: [
@@ -32,62 +40,22 @@ class SubscriptionController {
       ],
       order: [[Meetup, 'date']],
     });
+
+    await Cache.set(cacheKey, subscriptions);
+
     return res.json(subscriptions);
   }
 
   async store(req, res) {
-    const meetup_id = req.body.meetupId;
     const user_id = req.userId;
+    const meetup_id = req.body.meetupId;
 
-    const meetup = await Meetup.findByPk(meetup_id, { include: [User] });
-    const user = await User.findByPk(req.userId);
-
-    if (!meetup) {
-      return res.status(400).json({ error: 'Meetup does not exist' });
-    }
-
-    if (user_id === meetup.user_id) {
-      return res
-        .status(401)
-        .json({ error: 'You can not subscribe to your own meetup' });
-    }
-
-    if (meetup.past) {
-      return res
-        .status(401)
-        .json({ error: 'You can not subscribe to past meetups' });
-    }
-
-    const checkDate = await Subscription.findOne({
-      where: {
-        user_id,
-      },
-      include: [
-        {
-          model: Meetup,
-          required: true,
-          where: {
-            date: meetup.date,
-          },
-        },
-      ],
-    });
-
-    if (checkDate) {
-      return res.status(400).json({
-        error: 'Already subscribed to a meetup at the same date and time',
-      });
-    }
-
-    const subscription = await Subscription.create({
-      meetup_id,
+    const subscription = await CreateSubscriptionService.run({
       user_id,
+      meetup_id,
     });
 
-    await Queue.add(SubscriptionMail.key, {
-      meetup,
-      user,
-    });
+    await Cache.invalidate(`subscriptions:${user_id}`);
 
     return res.json(subscription);
   }
@@ -96,6 +64,8 @@ class SubscriptionController {
     const subscription = await Subscription.findByPk(req.params.id);
 
     await subscription.destroy();
+
+    await Cache.invalidate(`subscriptions:${req.userId}`);
 
     return res.send();
   }
